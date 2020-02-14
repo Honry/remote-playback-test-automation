@@ -101,7 +101,7 @@ The `remove all fake remote playback devices` `extension command` removes all ex
 TODO: Define the remote end steps.
 
 ## Handling WebDriver Errors
-This section extends the `Handling Errors` and defines extended `WebDriver error codes` specific for `fake remote playback device` in following table.
+This section extends the `Errors` and defines extended `WebDriver error codes` specific for `fake remote playback device` in following table.
 
 |Error Code|HTTP Status|JSON Error Code|Description|
 |----------|-----------|---------------|-----------|

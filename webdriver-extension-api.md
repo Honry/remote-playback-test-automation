@@ -43,7 +43,7 @@ dictionary FakeRemotePlaybackInit {
 ```
 
 ### FakeRemotePlaybackState enumeration
-A FakeRemotePlaybackState enumeration represents the state of connection to some `fake remote playback device`.
+A FakeRemotePlaybackState enumeration represents the `fake remote playback state`.
 ```
 enum FakeRemotePlaybackState {
   "playing"

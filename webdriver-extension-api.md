@@ -14,9 +14,10 @@ A `fake remote playback device` have associated `fake remote playback state`, wh
 
 When a user agent chooses to expose `fake remote playback device` interface, it MUST reconfigure its internal implementation of the `RemotePlayback` object in the current global object so that it MUST detect availability of, connect to and control playback on `fake remote playback devices` in following ways:
 - Once a `fake remote playback device` is added, it SHOULD be added to the `list of available remote playback devices`.
+- The `list of available remote playback devices` SHOULD only contains `fake remote playback devices`.
 - When invoke `watchAvailability()` method, the UA MUST monitor the `list of available remote playback devices`.
-- When invoke `prompt()` method, no UI will be prompted, the UA MUST connect to the `selected fake remote playback`.
-- If a `fake remote playback device` is added with `selected state` set to `true`, that it will become the `selected fake remote playback device` for the next request to `establish a connection with the remote playback device`.
+- When invoke `prompt()` method, no UI will be prompted, the UA MUST connect to the selected `fake remote playback device`.
+- If a `fake remote playback device` is added with `selected state` set to `true`, that it will become the selected `fake remote playback device` for the next request to `establish a connection with the remote playback device`.
 - If multiple `fake remote playback devices` are added with `selected state` set to `true`, then the implementation acts as if no `fake remote playback device` has been selected (i.e., the `prompt()` Promise will remain unresolved).
 - If no `fake remote playback device` has `selected state` set to `true`, the UA will behave as if the user has denied permission to use any `fake remote playback device`.
 - When the `state` of a `RemotePlayback` object is `connected`, the UA SHOULD satisfy conditions relate the `local playback state`, the `media element state`, and the `fake remote playback state` described in [`Media commands and media playback state`](https://w3c.github.io/remote-playback/#media-commands-and-media-playback-state).
@@ -32,7 +33,7 @@ dictionary FakeRemotePlayback {
 }
 ```
 - name: a string representing a `fake remote playback device`'s name.
-- selected: a boolean that indicates a `fake remote playback device`'s `selected state`. When set to true, this `fake remote playback device` is a `selected fake remote playback device`.
+- selected: a boolean that indicates a `fake remote playback device`'s `selected state`. When set to true, this `fake remote playback device` is a selected `fake remote playback device`.
 - state: A `FakeRemotePlaybackState` representing a `fake remote playback device`'s `fake remote playback state`.
 
 A `serialized fake remote playback device` is a JSON `Object` where a `fake remote playback`'s fields listed in the `FakeRemotePlayback` dictionary are mapped using the *JSON Key* and the associated field's value from the `fake remote playback devices` in the `current browsing context`.
@@ -158,7 +159,7 @@ The `remote end steps` are:
 3. Delete all `fake remote playback devices` in the `current browsing context`.
 4. Return `success` with data *null*.
 
-## Handling WebDriver Errors
+## Handling Errors
 This section extends the `Errors` and defines extended `WebDriver error codes` specific for `fake remote playback device` in following table.
 
 |Error Code|HTTP Status|JSON Error Code|Description|
